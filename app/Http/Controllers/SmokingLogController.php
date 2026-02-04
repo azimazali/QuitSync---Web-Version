@@ -119,7 +119,7 @@ class SmokingLogController extends Controller
             'quantity' => $request->quantity,
         ]);
 
-        return redirect()->route('dashboard')->with('status', 'Log updated successfully.');
+        return redirect()->route('activity.index')->with('status', 'Log updated successfully.');
     }
 
     public function destroy(SmokingLog $smokingLog)
@@ -130,6 +130,6 @@ class SmokingLogController extends Controller
 
         $smokingLog->delete();
 
-        return redirect()->route('dashboard')->with('status', 'Log deleted successfully.');
+        return redirect()->route('activity.index')->with('status', 'Log deleted successfully.');
     }
 }

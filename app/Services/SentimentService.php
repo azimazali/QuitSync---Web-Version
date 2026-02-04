@@ -36,6 +36,7 @@ class SentimentService
                     ],
                 ]
             ]);
+            Log::info("Google Cloud Language Client initialized successfully.");
         } catch (\Exception $e) {
             Log::error("Failed to initialize Google Cloud Language Client: " . $e->getMessage());
             $this->client = null;
@@ -44,7 +45,9 @@ class SentimentService
 
     public function analyze(string $text): array
     {
+        Log::info("Analyzing sentiment for text: " . substr($text, 0, 50) . "...");
         if (!$this->client) {
+            Log::warning("Sentiment analysis skipped: Client is null.");
             return [
                 'score' => 0.0,
                 'magnitude' => 0.0,

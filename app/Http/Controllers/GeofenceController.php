@@ -183,7 +183,7 @@ class GeofenceController extends Controller
 
         $geofence->delete();
 
-        return redirect()->route('dashboard')->with('status', 'Geofence deleted successfully!');
+        return redirect()->route('geofences.index')->with('status', 'Geofence deleted successfully!');
     }
 
     public function show(Geofence $geofence)
@@ -217,6 +217,6 @@ class GeofenceController extends Controller
 
         $geofence->update($request->all());
 
-        return redirect()->route('dashboard')->with('status', 'Geofence updated successfully.');
+        return redirect()->route('geofences.index')->with('status', 'Geofence updated successfully.');
     }
 }
