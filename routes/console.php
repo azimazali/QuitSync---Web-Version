@@ -8,13 +8,14 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('fix:risks', function () {
-    $this->info("Starting re-analysis of posts with 'unknown' risk level...");
+    $this->info("Starting re-analysis of posts...");
 
     $service = new \App\Services\SentimentService();
-    $posts = \App\Models\Post::where('risk_level', 'unknown')->get();
+    // Scan 'unknown' AND 'low' because some 'low' might actually be 'moderate' with new logic
+    $posts = \App\Models\Post::whereIn('risk_level', ['unknown', 'low'])->get();
 
     if ($posts->isEmpty()) {
-        $this->info("No posts found with 'unknown' risk level.");
+        $this->info("No posts found to update.");
         return;
     }
 
