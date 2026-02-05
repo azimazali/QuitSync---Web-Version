@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class GeofenceService
 {
-    private const CLUSTER_RADIUS_METERS = 50;
-    private const MIN_LOGS_FOR_CLUSTER = 5;
+    private const CLUSTER_RADIUS_METERS = 100;
+    private const MIN_LOGS_FOR_CLUSTER = 1;
 
     /**
      * Detect and create/update auto-geofences based on smoking history.
